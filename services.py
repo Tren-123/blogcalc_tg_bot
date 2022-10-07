@@ -1,4 +1,3 @@
-import urllib3
 import json
 
 class BotInstance:
@@ -49,7 +48,7 @@ def _check_new_comments_command(chat_id, text, reply_to_message_id, bot, method_
     print(f'{r.status} check_new_comments_command succeful')
 
 
-def text_handler(text_of_message, chat_id, reply_to_message_id, bot, method_of_response="sendMessage"):
+def command_handler(text_of_message, chat_id, reply_to_message_id, bot, method_of_response="sendMessage"):
     if text_of_message in ["/start", "/help"]:
         answer_text = 'Available commands:\
         \n/start, /help - show help note\
