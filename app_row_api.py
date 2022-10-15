@@ -9,16 +9,16 @@ last_update_id = None
 
 
 
-tg_bot = BotInstance(url, tg_token, urllib3.PoolManager())
+tg_bot = BotInstance(url, tg_token, urllib3.PoolManager(), None)
 
 
 while True:
-    response_status, answ_json = get_updates(tg_bot, last_update_id)
+    response_status, answ_json = get_updates(tg_bot)
     print(f"Status of connection {response_status}")
     if answ_json["result"]:
         try:
             for message in answ_json["result"]:
-                last_update_id, message_id, chat_id, text_of_message = return_message_content(message)
+                message_id, chat_id, text_of_message = return_message_content(tg_bot, message)
                 command_handler(text_of_message, chat_id, message_id, tg_bot)
         except KeyError:
             print(KeyError)
