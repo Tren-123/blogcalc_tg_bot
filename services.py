@@ -71,6 +71,8 @@ def ask_credentials(bot, user, method_of_response="sendMessage"):
         if answ_json["result"]:
                 for message in answ_json["result"]:
                     message_id, chat_id, text_of_message = return_message_content(bot, message)
+                    if chat_id != user.user_id:
+                        continue
                     if user.username == None:
                         user.username = text_of_message
                         r = bot.http.request("GET", 
@@ -121,6 +123,8 @@ def _create_post_command_steps(bot, user, method_of_response):
         if answ_json["result"]:
                 for message in answ_json["result"]:
                     message_id, chat_id, text_of_message = return_message_content(bot, message)
+                    if chat_id != user.user_id:
+                        continue
                     if user.post_title == None:
                         user.post_title = text_of_message
                         r = bot.http.request("GET", 
