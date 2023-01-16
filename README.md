@@ -1,4 +1,4 @@
-# Welocme to blogcalc_tg_bot
+# Welcome to blogcalc_tg_bot
 This bot created for interract with my [website](https://github.com/Tren-123/blogcalc) for blog creating
 ## Bot features
 Available commands:
